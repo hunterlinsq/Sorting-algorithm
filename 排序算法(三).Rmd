@@ -1,0 +1,49 @@
+---
+title: "排序算法(三)"
+author: "linsq"
+date: "2017年4月14日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 选择算法
+
+选择排序是一种简单直观的排序算法。它的原理是每一次从排序的数据元素中选出最小(或最大)的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。                
+
+算法：          
+SELECTSORT(A):          
+  for i=1 to A.length:          
+        A[i]=min(A[i...A.length])
+
+
+```{r}
+selectsort <- function(x){
+        n <- length(x)
+        for(i in 1:(n-1)){
+                mindex <- i
+                for(j in (i+1):n){
+                        if(x[j]<x[mindex]){
+                                mindex <- j
+                        }
+                }
+                temp <- x[i]
+                x[i] <- x[mindex]
+                x[mindex] <- temp
+        }
+        return(x)
+}
+
+a <- c(31,41,59,26,41,58)
+selectsort(a)
+```
+
+选择排序的时间复杂度在最好情况、最坏情况、平均情况下都是O(n^2),空间复杂度是O(1)，是不稳定的算法。
+
+
+##堆排序
+待补下二叉树的知识再来填坑。
+
+
